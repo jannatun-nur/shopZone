@@ -20,35 +20,35 @@ allData();
 
 
 const displayItem = items => {
+    // Connect with div
+    const itemCContainer = document.getElementById('item-container');
+    items.forEach(item => {
+        // Create a div
+        const itemCard = document.createElement('div');
+        itemCard.classList = `card card-compact bg-white w-full shadow-xl`;
 
-    // 01   connect with div 
-    const itemCContainer = document.getElementById('item-container')
-    items.forEach(item =>{
-        
-    //  02  create a div 
+        // Set innerHTML
+        itemCard.innerHTML = `
+            <figure>
+                <img
+                    src="${item.image}"
+                    alt="Shoes"
+                    class="item-image" />
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title text-gray-800">${item.title}</h2>
+                <div class="card-actions justify-center my-4">
+                    <button onclick="handleClick()" class="btn btn-primary ">View Details</button>
+                </div>
+            </div>
+        `;
 
-    const itemCard = document.createElement('div')
-    itemCard.classList = `card card-compact bg-base-100 w-96 shadow-xl`
+        // Append child
+        itemCContainer.appendChild(itemCard);
+    });
+};
 
-    //   03 set innterHTML
-
-    itemCard.innerHTML = `
-    <figure>
-     <img
-         src="${item.image}"
-         alt="Shoes" />
-     </figure>
-     <div class="card-body">
-         <h2 class="card-title">Shoes!</h2>
-         <p>If a dog chews shoes whose shoes does he choose?</p>
-     <div class="card-actions justify-end">
-     <button class="btn btn-primary">Buy Now</button>
-     </div>
-     </div>
- `;
-
-        //  04  appendChild
-        itemCContainer.appendChild(itemCard)
-
-    })
+// HandleDetailsButton
+const handleClick = () =>{
+    console.log('button clicked');
 }
